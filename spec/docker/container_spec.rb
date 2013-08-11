@@ -77,6 +77,17 @@ describe Docker::Container do
     end
   end
 
+  describe '#logs' do
+    subject { described_class.create('Cmd' => ["bash", "-c", "echo OUT; echo ERR 1>&2"   ], 'Image' => 'base') }
+
+    before { subject.start }
+
+    it "returns the current logs", :vcr do
+      expect(subject.wait(3)["StatusCode"]).to eq 0
+      expect(subject.logs).to eq "OUT\nERR\n"
+    end
+  end
+
   describe '#attach' do
     subject { described_class.create('Cmd' => %w[pwd], 'Image' => 'base') }
 
