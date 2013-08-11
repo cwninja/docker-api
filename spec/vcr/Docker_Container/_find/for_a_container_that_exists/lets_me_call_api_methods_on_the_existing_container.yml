@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:4243/v1.4/containers/create
+    body:
+      encoding: UTF-8
+      string: ! '{"Cmd":["bash","-c","exit 123"],"Image":"base"}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Swipely/Docker-API 1.5.0
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        dGV4dC9wbGFpbjsgY2hhcnNldD11dGYtOA==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MjE=
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U3VuLCAxMSBBdWcgMjAxMyAxNzo1ODoyNCBHTVQ=
+    body:
+      encoding: US-ASCII
+      string: ! '{"Id":"e6e85cf935c6"}'
+    http_version: 
+  recorded_at: Sun, 11 Aug 2013 17:58:24 GMT
+- request:
+    method: post
+    uri: http://localhost:4243/v1.4/containers/e6e85cf935c6/start
+    body:
+      encoding: UTF-8
+      string: ! '{}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Swipely/Docker-API 1.5.0
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        dGV4dC9wbGFpbjsgY2hhcnNldD11dGYtOA==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MA==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U3VuLCAxMSBBdWcgMjAxMyAxNzo1ODoyNCBHTVQ=
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Sun, 11 Aug 2013 17:58:24 GMT
+- request:
+    method: post
+    uri: http://localhost:4243/v1.4/containers/e6e85cf935c6/wait
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - text/plain
+      User-Agent:
+      - Swipely/Docker-API 1.5.0
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MTg=
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U3VuLCAxMSBBdWcgMjAxMyAxNzo1ODoyNCBHTVQ=
+    body:
+      encoding: US-ASCII
+      string: ! '{"StatusCode":123}'
+    http_version: 
+  recorded_at: Sun, 11 Aug 2013 17:58:24 GMT
+- request:
+    method: get
+    uri: http://localhost:4243/v1.4/containers/e6e85cf935c6/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - text/plain
+      User-Agent:
+      - Swipely/Docker-API 1.5.0
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        ODg1
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U3VuLCAxMSBBdWcgMjAxMyAxNzo1ODoyNCBHTVQ=
+    body:
+      encoding: US-ASCII
+      string: ! '{"ID":"e6e85cf935c6815cf85998f2eb12c289e07e39dddd559d1a16cf26844c47638c","Created":"2013-08-11T17:58:24.692516782Z","Path":"bash","Args":["-c","exit
+        123"],"Config":{"Hostname":"e6e85cf935c6","User":"","Memory":0,"MemorySwap":0,"CpuShares":0,"AttachStdin":false,"AttachStdout":false,"AttachStderr":false,"PortSpecs":null,"Tty":false,"OpenStdin":false,"StdinOnce":false,"Env":null,"Cmd":["bash","-c","exit
+        123"],"Dns":null,"Image":"base","Volumes":null,"VolumesFrom":"","Entrypoint":null,"NetworkDisabled":false},"State":{"Running":false,"Pid":0,"ExitCode":123,"StartedAt":"2013-08-11T17:58:24.771826285Z","Ghost":false},"Image":"b750fe79269d2ec9a3c593ef05b4332b1d1a02a62b4accb2c21d589ff2f5f2dc","NetworkSettings":{"IPAddress":"","IPPrefixLen":0,"Gateway":"","Bridge":"","PortMapping":null},"SysInitPath":"/usr/bin/docker","ResolvConfPath":"/etc/resolv.conf","Volumes":{},"VolumesRW":{}}'
+    http_version: 
+  recorded_at: Sun, 11 Aug 2013 17:58:25 GMT
+recorded_with: VCR 2.5.0

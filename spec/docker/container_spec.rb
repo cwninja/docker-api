@@ -264,6 +264,30 @@ describe Docker::Container do
     end
   end
 
+  describe '.find', :vcr do
+    context "for a container that exists" do
+      let(:existing_container){
+        Docker::Container.create(
+          Cmd: ["bash", "-c", "exit 123"],
+          Image: "base"
+        )
+      }
+
+      it "locates the container of the given id" do
+        container = described_class.find(existing_container.id)
+        expect(container.id).to eq existing_container.id
+      end
+
+      it "lets me call api methods on the existing_container" do
+        container = described_class.find(existing_container.id)
+        container.start
+        container.wait(3)
+        exit_status = container.json["State"]["ExitCode"]
+        expect(exit_status).to eq 123
+      end
+    end
+  end
+
   describe '.all' do
     subject { described_class }
 

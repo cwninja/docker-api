@@ -88,6 +88,10 @@ class Docker::Container
     end
   end
 
+  def self.find(id, conn = Docker.connection)
+    new(conn, id)
+  end
+
   # Create a new Container.
   def self.create(opts = {}, conn = Docker.connection)
     instance = new(conn)
