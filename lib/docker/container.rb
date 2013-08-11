@@ -54,6 +54,13 @@ class Docker::Container
     connection.post(path_for(:attach), opts, :response_block => block)
   end
 
+  # View the current logs.
+  def logs(options = {}, &block)
+    defaults = {:stdout => true, :stderr => true}
+    opts = defaults.merge(options).merge({:stream => nil, :logs => true})
+    attach(opts, &block)
+  end
+
   # Create an Image from a Container's change.s
   def commit(options = {})
     options.merge!('container' => self.id[0..7])
